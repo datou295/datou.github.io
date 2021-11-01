@@ -7,11 +7,12 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
-</copyright><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+</copyright>
+    <lastBuildDate>Sun, 10 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
+      <title>内网端口转发和socks连接</title>
       <link>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</guid>
       <description>内网端口转发和socks连接 端口转发

@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/authors/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/authors/dt/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%86%85%E7%BD%91/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</loc>
+    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/docs/example-doc/chapter-1/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,9 +44,6 @@
     <loc>/docs/example-doc/nested-chapter/chapter-2/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2020-10-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/docs/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -26,22 +53,12 @@
     <loc>/docs/example-doc/nested-chapter/</loc>
     <lastmod>2020-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</loc>
-  </url><url>
-    <loc>/authors/</loc>
-  </url><url>
-    <loc>/categories/</loc>
-  </url><url>
     <loc>/content/</loc>
   </url><url>
     <loc>/authors/datou/</loc>
   </url><url>
     <loc>/authors/hugo-authors/</loc>
   </url><url>
-    <loc>/posts/</loc>
-  </url><url>
     <loc>/series/</loc>
-  </url><url>
-    <loc>/tags/</loc>
   </url>
 </urlset>

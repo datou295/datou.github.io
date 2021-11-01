@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DDTT95</title>
-    <link>/</link>
-    <description>Recent content on DDTT95</description>
+    <title>端口转发 on DDTT95</title>
+    <link>/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>
+    <description>Recent content in 端口转发 on DDTT95</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 10 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>内网端口转发和socks连接</title>
       <link>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</link>
@@ -27,42 +27,6 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
 [common] bind_addr = 0.0.0.0 bind_port = 7000 # auth token token = 48484  内网端口转发配置客户端fpr-windows文件frpc.ini
 [common] server_addr = 127.0.0.1 server_port = 7000 token = 48484 [ssh] type = tcp local_ip = 127.0.0.1 local_port = 80 remote_port = 6000  与内网建立socks连接配置文件，新建一个文件frp_proxy.ini
 [common] server_addr = 137.220.34.205 server_port = 7000 token = 48484 [socks5] type = tcp remote_port = 6000 plugin = socks5 # 设置账号密码 # plugin_http_user = abc # plugin_http_passwd = abc # plugin = socks5 # plugin_user = abc # plugin_passwd = abc  venom 往vps上传admin_linux_x64</description>
-    </item>
-    
-    <item>
-      <title>Chapter 1</title>
-      <link>/docs/example-doc/chapter-1/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/example-doc/chapter-1/</guid>
-      <description>&lt;p&gt;This is chapter 1 of example doc.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Chapter 1</title>
-      <link>/docs/example-doc/nested-chapter/chapter-1/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/example-doc/nested-chapter/chapter-1/</guid>
-      <description>&lt;p&gt;This is chapter 1 of nested chapter.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Chapter 2</title>
-      <link>/docs/example-doc/chapter-2/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/example-doc/chapter-2/</guid>
-      <description>&lt;p&gt;This is chapter 2 of example doc.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Chapter 2</title>
-      <link>/docs/example-doc/nested-chapter/chapter-2/</link>
-      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/example-doc/nested-chapter/chapter-2/</guid>
-      <description>&lt;p&gt;This is chapter 2 of nested chapter.&lt;/p&gt;</description>
     </item>
     
   </channel>

