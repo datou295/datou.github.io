@@ -1,0 +1,88 @@
+{
+	"formatVersion": 1,
+	"appVersion": "0.47.5",
+	"files": [
+		{
+			"isClone": false,
+			"noteId": "zTxs1g4BBuN2",
+			"notePath": [
+				"zTxs1g4BBuN2"
+			],
+			"title": "内网端口转发和socks连接",
+			"notePosition": 50,
+			"prefix": null,
+			"isExpanded": 0,
+			"type": "text",
+			"mime": "text/html",
+			"attributes": [
+				{
+					"type": "relation",
+					"name": "imageLink",
+					"value": "P0GDD4uVKePq",
+					"isInheritable": false,
+					"position": 1
+				},
+				{
+					"type": "relation",
+					"name": "imageLink",
+					"value": "6kTwqDVEzDn4",
+					"isInheritable": false,
+					"position": 2
+				}
+			],
+			"format": "markdown",
+			"dataFileName": "内网端口转发和socks连接.md",
+			"dirFileName": "内网端口转发和socks连接",
+			"children": [
+				{
+					"isClone": false,
+					"noteId": "P0GDD4uVKePq",
+					"notePath": [
+						"zTxs1g4BBuN2",
+						"P0GDD4uVKePq"
+					],
+					"title": "image.png",
+					"notePosition": 0,
+					"prefix": null,
+					"isExpanded": 0,
+					"type": "image",
+					"mime": "image/png",
+					"attributes": [
+						{
+							"type": "label",
+							"name": "originalFileName",
+							"value": "image.png",
+							"isInheritable": false,
+							"position": 1000
+						}
+					],
+					"dataFileName": "image.png"
+				},
+				{
+					"isClone": false,
+					"noteId": "6kTwqDVEzDn4",
+					"notePath": [
+						"zTxs1g4BBuN2",
+						"6kTwqDVEzDn4"
+					],
+					"title": "image.png",
+					"notePosition": 10,
+					"prefix": null,
+					"isExpanded": 0,
+					"type": "image",
+					"mime": "image/jpg",
+					"attributes": [
+						{
+							"type": "label",
+							"name": "originalFileName",
+							"value": "image.png",
+							"isInheritable": false,
+							"position": 1000
+						}
+					],
+					"dataFileName": "1_image.png"
+				}
+			]
+		}
+	]
+}
