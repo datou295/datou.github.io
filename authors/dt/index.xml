@@ -11,10 +11,10 @@
     <lastBuildDate>Sun, 10 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/authors/dt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>内网端口转发和socks连接</title>
-      <link>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</link>
+      <link>/posts/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>
       <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/%E5%86%85%E7%BD%91%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%92%8Csocks%E8%BF%9E%E6%8E%A5/</guid>
+      <guid>/posts/%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</guid>
       <description>内网端口转发和socks连接 端口转发
 在自己的vps上运行fprs，服务器是Linux
 ./frps -c frps.ini  上传一个frp-window到被攻击的内网主机，这台主机因为是内网机器我们不能直接访问，通过打下对方的服务器进行横向移动拿到对方的一台内网主机（cs上线）再在对方的主机上传一个frpc.exe和frpc.ini，配置文件内容如下，再在cs运行frpc.exe即可完成内网端口的转发
