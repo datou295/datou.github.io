@@ -11,10 +11,10 @@
     <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pth/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>内网PTH</title>
-      <link>/posts/pth/</link>
+      <link>/posts/pth1/</link>
       <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/pth/</guid>
+      <guid>/posts/pth1/</guid>
       <description>内网PTH横向 cs上线一台机器后，arp-a 查看内网ip然后dump hash
 **上线的机器的Token令牌必须完整才能dump机器的hash，不管上线的机器的用户是不是administrator-SID=500，只要令牌完整，能dump上线机器的hash，都可以利用dump下来的administrator的账号和hash去PTH，被攻击的机器的500用户必须开启，且被攻击用户的账号和密码一样
 mimikatz制作token
