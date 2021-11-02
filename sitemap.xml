@@ -3,25 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/authors/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/authors/dt/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/pth/</loc>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2021-10-10T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/pth/</loc>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E5%86%85%E7%BD%91%E6%A8%AA%E5%90%91/</loc>
+    <lastmod>2021-10-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/11/</loc>
     <lastmod>2021-10-10T00:00:00+00:00</lastmod>
